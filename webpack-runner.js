@@ -33,7 +33,7 @@ rimraf.sync(distDir);
 
 // --aot 
 const AoTPluginOptions = {
-  tsConfigPath: './tsconfig.json',
+  tsConfigPath: './src/tsconfig.json',
   skipCodeGeneration: true
 };
 

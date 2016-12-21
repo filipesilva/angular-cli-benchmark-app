@@ -8,7 +8,7 @@ const logFile = 'benchmark.log';
 const editedFile = 'app/app.module.ts';
 
 const options = {
-  iterations: 2,
+  iterations: 5,
   multiPromise: serialMultiPromise,
   spawn: matchSpawn,
   commands: [
@@ -68,7 +68,7 @@ function matchSpawn(dataFn, cmd, args = []) {
     cmd = 'cmd.exe';
     spawnOptions['stdio'] = 'pipe';
   }
-
+console.log(cmd, args)
   const childProcess = spawn(cmd, args, spawnOptions);
 
   childProcess.stdout.on('data', (data) => {

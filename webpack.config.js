@@ -8,7 +8,7 @@ module.exports = {
     extensions: ['.ts', '.js']
   },
   entry: {
-    main: './app/main.ts'
+    main: './src/main.ts'
   },
   output: {
     path: distDir,
@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve('./', 'index.html'),
+      template: path.resolve('./src', 'index.html'),
     })
   ],
   module: {
