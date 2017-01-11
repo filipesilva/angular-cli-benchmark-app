@@ -58,7 +58,7 @@ if (argv.vendorChunk) {
     plugins: [
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
-        minChunks: (module) => module.userRequest && module.userRequest.startsWith(nodeModules)
+        minChunks: (module) => module.resource && module.resource.startsWith(nodeModules)
       })
     ]
   });
