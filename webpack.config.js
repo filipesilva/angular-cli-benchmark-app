@@ -8,7 +8,14 @@ module.exports = {
     extensions: ['.ts', '.js']
   },
   entry: {
-    main: './src/main.ts'
+    main: ['./src/main.ts'],
+    styles: ['!style-loader!css-loader!sass-loader!./src/styles.scss'],
+    scripts: [
+      'script-loader!./src/scripts.js',
+      'script-loader!./node_modules/jquery/dist/jquery.js',
+      'script-loader!./node_modules/tether/dist/js/tether.js',
+      'script-loader!./node_modules/bootstrap/dist/js/bootstrap.js'
+    ]
   },
   output: {
     path: distDir,
@@ -42,6 +49,6 @@ module.exports = {
     children: false
   },
   performance: {
-   hints: false
- }
+    hints: false
+  }
 };
