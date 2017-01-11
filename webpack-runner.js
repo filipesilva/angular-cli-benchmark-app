@@ -53,8 +53,7 @@ if (argv.sourcemap) {
 }
 
 // --vendor-chunk
-// don't add vendor chunk together with DLL
-if (argv.vendorChunk && !argv.dll) {
+if (argv.vendorChunk) {
   config = webpackMerge(config, {
     plugins: [
       new webpack.optimize.CommonsChunkPlugin({
@@ -75,14 +74,16 @@ if (argv.dll) {
     },
     entry: {
       dll: [
-        '@angular/common',
-        '@angular/compiler',
-        '@angular/core',
-        '@angular/forms',
-        '@angular/http',
-        '@angular/platform-browser',
-        '@angular/platform-browser-dynamic',
-        '@angular/router'
+        'rxjs',
+        'moment',
+        // '@angular/common',
+        // '@angular/compiler',
+        // '@angular/core',
+        // '@angular/forms',
+        // '@angular/http',
+        // '@angular/platform-browser',
+        // '@angular/platform-browser-dynamic',
+        // '@angular/router'
       ]
     },
     output: {

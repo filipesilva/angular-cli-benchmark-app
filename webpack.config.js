@@ -40,5 +40,8 @@ module.exports = {
     colors: true,
     chunks: false,
     children: false
-  }
+  },
+  performance: {
+   hints: false
+ }
 };
