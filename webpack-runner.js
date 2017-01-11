@@ -58,6 +58,7 @@ if (argv.vendorChunk) {
     plugins: [
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
+        chunks: ['main'],
         minChunks: (module) => module.resource && module.resource.startsWith(nodeModules)
       })
     ]
@@ -75,15 +76,14 @@ if (argv.dll) {
     entry: {
       dll: [
         'rxjs',
-        'moment',
-        // '@angular/common',
-        // '@angular/compiler',
-        // '@angular/core',
-        // '@angular/forms',
-        // '@angular/http',
-        // '@angular/platform-browser',
-        // '@angular/platform-browser-dynamic',
-        // '@angular/router'
+        '@angular/common',
+        '@angular/compiler',
+        '@angular/core',
+        '@angular/forms',
+        '@angular/http',
+        '@angular/platform-browser',
+        '@angular/platform-browser-dynamic',
+        '@angular/router'
       ]
     },
     output: {
@@ -96,8 +96,15 @@ if (argv.dll) {
         path: path.resolve(distDir, '[name]-manifest.json'),
         name: '[name]_[hash]',
         context: distDir
-      })
-    ]
+      }),
+      new webpack.ContextReplacementPlugin(
+        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        path.resolve('./', 'src')
+      )
+    ],
+    performance: {
+      hints: false
+    }
   }
 
   // compile the dll bundle before the main app
